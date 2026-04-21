@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo Fosalba Vela</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --sidebar-bg: #f8f9fa;
+    --text: #212529;
+    --muted: #6c757d;
+    --accent: #0076df;
+    --accent-dark: #0056b3;
+    --border: #dee2e6;
+    --badge-bg: #e9ecef;
+    --font: 'Nunito Sans', -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand { font-weight: 600; font-size: 1rem; color: var(--text); text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 0; }
+  nav a {
+    font-size: 0.85rem; color: var(--muted); text-decoration: none;
+    padding: 0 0.9rem; line-height: 56px; display: block;
+    transition: color 0.15s;
+  }
+  nav a:hover, nav a.active { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: sticky; top: 72px; }
+
+  .profile-avatar {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c8d8e8 0%, #8fa9c4 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; font-weight: 300; color: #fff;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+
+  .sidebar h1 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .sidebar .position { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.1rem; }
+  .sidebar .institution { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+
+  .sidebar-section { margin-bottom: 1.25rem; }
+  .sidebar-section h4 {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .interests li {
+    font-size: 0.82rem; color: var(--text); list-style: none;
+    padding: 0.2rem 0.5rem; margin-bottom: 0.25rem;
+    background: var(--badge-bg); border-radius: 4px; display: inline-block;
+    margin-right: 0.25rem;
+  }
+  .interests { display: flex; flex-wrap: wrap; gap: 0; }
+
+  .edu-item { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.5rem; }
+  .edu-item i { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; flex-shrink: 0; }
+  .edu-item .edu-text { font-size: 0.82rem; }
+  .edu-item .edu-degree { font-weight: 600; }
+  .edu-item .edu-inst { color: var(--muted); }
+  .edu-item .edu-year { color: var(--muted); font-size: 0.75rem; }
+
+  .social-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+  .social-links a {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--badge-bg); display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 0.9rem; text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .social-links a:hover { background: var(--accent); color: #fff; }
+
+  /* ── MAIN CONTENT ── */
+  .main-content {}
+
+  section { margin-bottom: 3rem; }
+
+  .section-title {
+    font-size: 1.3rem; font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  /* About */
+  .about-text p { margin-bottom: 0.9rem; font-size: 0.95rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .news-item {
+    display: flex; gap: 1rem; align-items: baseline;
+    font-size: 0.88rem; padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-date { color: var(--muted); font-size: 0.8rem; white-space: nowrap; min-width: 80px; }
+  .news-text { color: var(--text); }
+
+  /* Stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+  .stat-card {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .stat-num { font-size: 1.6rem; font-weight: 600; color: var(--accent); display: block; }
+  .stat-label { font-size: 0.75rem; color: var(--muted); }
+
+  /* Publications */
+  .pub-year-group { margin-bottom: 2rem; }
+  .pub-year-label {
+    font-size: 0.8rem; font-weight: 700; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .pub-item {
+    display: flex; gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-item:last-child { border-bottom: none; }
+  .pub-num {
+    font-size: 0.8rem; color: var(--muted);
+    min-width: 24px; padding-top: 0.15rem; text-align: right;
+  }
+  .pub-body { flex: 1; }
+  .pub-title { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--text); }
+  .pub-authors { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.25rem; }
+  .pub-authors strong { color: var(--text); font-weight: 600; }
+  .pub-venue { font-size: 0.83rem; color: var(--muted); font-style: italic; margin-bottom: 0.35rem; }
+  .pub-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .badge {
+    font-size: 0.72rem; padding: 0.15rem 0.55rem; border-radius: 4px;
+    font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-cite { background: #e8f4e8; color: #2d7a2d; }
+  .badge-ads { background: #e8eef8; color: #1a4a8c; }
+
+  /* Experience */
+  .exp-item {
+    display: grid; grid-template-columns: 150px 1fr;
+    gap: 0 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-years { font-size: 0.8rem; color: var(--muted); padding-top: 0.1rem; }
+  .exp-role { font-size: 0.93rem; font-weight: 600; }
+  .exp-org { font-size: 0.85rem; color: var(--muted); }
+  .exp-badge-wrap { margin-top: 0.3rem; }
+  .exp-tag {
+    font-size: 0.72rem; padding: 0.1rem 0.45rem;
+    background: #e8eef8; color: #1a4a8c;
+    border-radius: 4px; display: inline-block; font-weight: 600;
+  }
+  .exp-desc { font-size: 0.83rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* Talks */
+  .talk-item {
+    padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+    display: flex; gap: 1rem;
+  }
+  .talk-item:last-child { border-bottom: none; }
+  .talk-date { font-size: 0.8rem; color: var(--muted); white-space: nowrap; min-width: 70px; }
+  .talk-body { flex: 1; }
+  .talk-title { font-size: 0.9rem; font-weight: 600; }
+  .talk-venue { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+  .talk-type {
+    font-size: 0.7rem; padding: 0.1rem 0.45rem;
+    background: #fff3cd; color: #856404;
+    border-radius: 4px; display: inline-block; font-weight: 600; margin-bottom: 0.2rem;
+  }
+
+  /* CV download */
+  .cv-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; font-weight: 600;
+    color: #fff; background: var(--accent);
+    padding: 0.5rem 1.1rem; border-radius: 5px;
+    text-decoration: none; transition: background 0.15s;
+    margin-top: 1rem;
+  }
+  .cv-btn:hover { background: var(--accent-dark); }
+
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 0.8rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 720px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .exp-item { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Pablo Fosalba Vela</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="profile-avatar">PF</div>
+    <h1>Pablo Fosalba Vela</h1>
+    <div class="position">Investigador Científico</div>
+    <div class="institution">ICE, CSIC · Barcelona</div>
+
+    <div class="sidebar-section">
+      <h4>Interests</h4>
+      <ul class="interests">
+        <li>Cosmology</li>
+        <li>Large-Scale Structure</li>
+        <li>CMB</li>
+        <li>Dark Energy</li>
+        <li>N-body Simulations</li>
+        <li>Galaxy Surveys</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Education</h4>
+      <div class="edu-item">
+        <i class="fas fa-graduation-cap"></i>
+        <div class="edu-text">
+          <div class="edu-degree">PhD in Physics, 1998</div>
+          <div class="edu-inst">Universidad de Barcelona</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <i class="fas fa-graduation-cap"></i>
+        <div class="edu-text">
+          <div class="edu-degree">BSc in Physics, 1993</div>
+          <div class="edu-inst">Univ. Autónoma de Barcelona</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Links</h4>
+      <div class="social-links">
+        <a href="mailto:fosalba@ice.csic.es" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://ui.adsabs.harvard.edu" title="NASA/ADS"><i class="ai ai-nasa-ads"></i></a>
+        <a href="https://orcid.org/0000-0002-1510-5214" title="ORCID"><i class="ai ai-orcid"></i></a>
+        <a href="https://www.scopus.com/authid/detail.uri?authorId=6701688696" title="Scopus"><i class="ai ai-scopus"></i></a>
+        <a href="https://cosmohub.pic.es" title="CosmoHub"><i class="fas fa-globe"></i></a>
+        <a href="tel:+34937379788" title="Phone"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+
+    <a href="#" class="cv-btn"><i class="fas fa-download"></i> Download CV</a>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main-content">
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about-text">
+        <p>I am a senior scientist of the Spanish National Research Council (CSIC), currently holding the position of <strong>Investigador Científico</strong> — the 2nd highest of the three CSIC permanent staff levels — a position I won through national competition in 2022.</p>
+        <p>My research focuses on understanding the origin and evolution of the universe through theory, simulations, and observational data, with particular emphasis on the <strong>Large-Scale Structure</strong> traced by galaxies and the <strong>Cosmic Microwave Background (CMB)</strong>. I am a builder of major astronomical surveys including PLANCK, ARCHEOPS, DES, PAU, and <strong>Euclid</strong>, and a member of DESI and LSST.</p>
+        <p>Highlights from my research include pioneering the first detection of the ISW effect — the first physical evidence for dark energy independent of supernovae data — recognised by <em>Science</em> magazine as the <strong>#1 Breakthrough of the Year in 2003</strong> across all fields of science. Since 2005 I have led the <strong>MICE simulation programme</strong>, one of the largest cosmological simulations ever produced, and contributed to developing <a href="https://cosmohub.pic.es" style="color:var(--accent)">CosmoHub</a>, now serving 1,000+ research groups worldwide.</p>
+        <p>I have directed 5 doctoral theses and 7 Master theses, taught ~120 hours at the IFAE-ICE-UAB Master in High-Energy Physics, Astrophysics and Cosmology, and delivered 40+ invited talks internationally. My work has been covered by The New York Times, Science, and Scientific American.</p>
+      </div>
+
+      <div class="stats-row" style="margin-top: 2rem;">
+        <div class="stat-card"><span class="stat-num">51k+</span><span class="stat-label">Total Citations</span></div>
+        <div class="stat-card"><span class="stat-num">h=103</span><span class="stat-label">Hirsch Index</span></div>
+        <div class="stat-card"><span class="stat-num">460</span><span class="stat-label">Q1 Papers</span></div>
+        <div class="stat-card"><span class="stat-num">3k+</span><span class="stat-label">Citations/year</span></div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2 class="section-title">Selected Publications</h2>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">Full list on <a href="https://ui.adsabs.harvard.edu" style="color:var(--accent)">NASA/ADS</a>. 460 papers in Q1 journals · 30 as first/second author · 8 with 100+ citations as first/second author.</p>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2025</div>
+        <div class="pub-item">
+          <div class="pub-num">1</div>
+          <div class="pub-body">
+            <div class="pub-title">Euclid: V. The Flagship galaxy mock catalogue: A comprehensive simulation for the Euclid mission</div>
+            <div class="pub-authors">Euclid Collaboration: F. Castander, <strong>Fosalba, P.</strong>, et al. (199 authors)</div>
+            <div class="pub-venue">Astronomy &amp; Astrophysics, 697, A5</div>
+            <div class="pub-badges"><span class="badge badge-cite">79 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2021</div>
+        <div class="pub-item">
+          <div class="pub-num">2</div>
+          <div class="pub-body">
+            <div class="pub-title">Explaining cosmological anisotropy: evidence for causal horizons from CMB data</div>
+            <div class="pub-authors"><strong>Fosalba, P.</strong>, Gaztañaga, E.</div>
+            <div class="pub-venue">MNRAS, 504, 5840</div>
+            <div class="pub-badges"><span class="badge badge-cite">53 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2015</div>
+        <div class="pub-item">
+          <div class="pub-num">3</div>
+          <div class="pub-body">
+            <div class="pub-title">The MICE Grand Challenge lightcone simulation I: Dark-matter clustering</div>
+            <div class="pub-authors"><strong>Fosalba, P.</strong>, Crocce, M., Gaztañaga, E., Castander, F.</div>
+            <div class="pub-venue">MNRAS, 448, 2987</div>
+            <div class="pub-badges"><span class="badge badge-cite">209 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-num">4</div>
+          <div class="pub-body">
+            <div class="pub-title">The MICE Grand Challenge lightcone simulation III: Galaxy lensing mocks from all-sky lensing maps</div>
+            <div class="pub-authors"><strong>Fosalba, P.</strong>, Gaztañaga, E., Castander, F., Crocce, M.</div>
+            <div class="pub-venue">MNRAS, 447, 1319</div>
+            <div class="pub-badges"><span class="badge badge-cite">176 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2008</div>
+        <div class="pub-item">
+          <div class="pub-num">5</div>
+          <div class="pub-body">
+            <div class="pub-title">The onion universe: all-sky lightcone simulations in spherical shells</div>
+            <div class="pub-authors"><strong>Fosalba, P.</strong>, Gaztañaga, E., Castander, F.J., Manera, M.</div>
+            <div class="pub-venue">MNRAS, 391, 435</div>
+            <div class="pub-badges"><span class="badge badge-cite">135 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2003</div>
+        <div class="pub-item">
+          <div class="pub-num">6</div>
+          <div class="pub-body">
+            <div class="pub-title">Detection of the Integrated Sachs-Wolfe and Sunyaev-Zeldovich effects from the CMB–galaxy correlation</div>
+            <div class="pub-authors"><strong>Fosalba, P.</strong>, Gaztañaga, E., Castander, F.J.</div>
+            <div class="pub-venue">ApJ, 597, L89</div>
+            <div class="pub-badges"><span class="badge badge-cite">253 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-year-group">
+        <div class="pub-year-label">2002</div>
+        <div class="pub-item">
+          <div class="pub-num">7</div>
+          <div class="pub-body">
+            <div class="pub-title">Statistical properties of galactic starlight polarization</div>
+            <div class="pub-authors"><strong>Fosalba, P.</strong>, Lazarian, A., Prunet, S., Tauber, J.</div>
+            <div class="pub-venue">ApJ, 564, 762</div>
+            <div class="pub-badges"><span class="badge badge-cite">163 citations</span><span class="badge badge-ads">ADS</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-item">
+        <div class="exp-years">2023 – 2026</div>
+        <div>
+          <div class="exp-role">Investigador Científico</div>
+          <div class="exp-org">Instituto de Ciencias del Espacio (ICE, CSIC)</div>
+          <div class="exp-badge-wrap"><span class="exp-tag">Associate Professor level</span></div>
+          <div class="exp-desc">2nd highest CSIC permanent position. Leading Euclid simulations, coordinating H2020 MSCA LACEGAL network (15 institutions, EU/Latin America/China), co-chairing Euclid Publication Group (2025–).</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2008 – 2023</div>
+        <div>
+          <div class="exp-role">Científico Titular</div>
+          <div class="exp-org">Instituto de Ciencias del Espacio (ICE, CSIC)</div>
+          <div class="exp-badge-wrap"><span class="exp-tag">Tenured Scientist</span></div>
+          <div class="exp-desc">Led MICE Grand Challenge simulations. Co-Convenor of DES Simulations WG (2018–21) and ESA/Euclid Simulations WG (since 2011). Member of Euclid Editorial Board (2017–2025).</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2005 – 2008</div>
+        <div>
+          <div class="exp-role">Ramón y Cajal Researcher</div>
+          <div class="exp-org">Instituto de Ciencias del Espacio (ICE, CSIC)</div>
+          <div class="exp-badge-wrap"><span class="exp-tag">Tenure Track Fellowship</span></div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2003 – 2004</div>
+        <div>
+          <div class="exp-role">Postdoctoral Fellow</div>
+          <div class="exp-org">Institute for Astronomy, University of Hawai'i, USA</div>
+          <div class="exp-badge-wrap"><span class="exp-tag">NASA Fellowship</span></div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2001 – 2003</div>
+        <div>
+          <div class="exp-role">Postdoctoral Fellow</div>
+          <div class="exp-org">Institut d'Astrophysique de Paris (IAP/CNRS), France</div>
+          <div class="exp-badge-wrap"><span class="exp-tag">Marie Curie Fellowship</span></div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">1999 – 2000</div>
+        <div>
+          <div class="exp-role">Postdoctoral Fellow</div>
+          <div class="exp-org">European Space Agency (ESTEC), The Netherlands</div>
+          <div class="exp-badge-wrap"><span class="exp-tag">ESA Fellowship</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="talks">
+      <h2 class="section-title">Invited Talks <span style="font-size:0.8rem; font-weight:400; color:var(--muted)">(selected · 40+ total)</span></h2>
+      <div class="talk-item">
+        <div class="talk-date">Jul 2024</div>
+        <div class="talk-body">
+          <div><span class="talk-type">Plenary Invited</span></div>
+          <div class="talk-title">Cosmology with Euclid: from promise to reality</div>
+          <div class="talk-venue">SEA Meeting, Granada</div>
+        </div>
+      </div>
+      <div class="talk-item">
+        <div class="talk-date">Jul 2024</div>
+        <div class="talk-body">
+          <div><span class="talk-type">Invited</span></div>
+          <div class="talk-title">The Euclid mission</div>
+          <div class="talk-venue">Curso de Verano UCM "El Universo a nuestro alcance", El Escorial</div>
+        </div>
+      </div>
+      <div class="talk-item">
+        <div class="talk-date">Nov 2023</div>
+        <div class="talk-body">
+          <div><span class="talk-type">Plenary Invited</span></div>
+          <div class="talk-title">Cosmology with the Euclid mission</div>
+          <div class="talk-venue">IX Meeting on Fundamental Cosmology, Tenerife</div>
+        </div>
+      </div>
+      <div class="talk-item">
+        <div class="talk-date">May 2022</div>
+        <div class="talk-body">
+          <div><span class="talk-type">Plenary Invited</span></div>
+          <div class="talk-title">Simulations for the next generation of galaxy surveys</div>
+          <div class="talk-venue">Advances in cosmology through numerical simulations (MIAPbP), MPA Garching</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">Open to collaborations, visiting arrangements, and partnerships in observational cosmology and large-scale structure.</p>
+      <table style="font-size:0.88rem; border-collapse:collapse; width:100%;">
+        <tr>
+          <td style="padding:0.4rem 1rem 0.4rem 0; color:var(--muted); white-space:nowrap; vertical-align:top;"><i class="fas fa-envelope" style="width:16px"></i> Email</td>
+          <td><a href="mailto:fosalba@ice.csic.es" style="color:var(--accent)">fosalba@ice.csic.es</a></td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1rem 0.4rem 0; color:var(--muted); white-space:nowrap; vertical-align:top;"><i class="fas fa-map-marker-alt" style="width:16px"></i> Address</td>
+          <td>Carrer can Magrans, s/n, 08193 Cerdanyola del Vallès, Barcelona</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1rem 0.4rem 0; color:var(--muted); white-space:nowrap; vertical-align:top;"><i class="fas fa-phone" style="width:16px"></i> Phone</td>
+          <td>+34 937 379 788</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1rem 0.4rem 0; color:var(--muted); white-space:nowrap; vertical-align:top;"><i class="ai ai-orcid" style="width:16px"></i> ORCID</td>
+          <td><a href="https://orcid.org/0000-0002-1510-5214" style="color:var(--accent)">0000-0002-1510-5214</a></td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1rem 0.4rem 0; color:var(--muted); white-space:nowrap; vertical-align:top;"><i class="ai ai-scopus" style="width:16px"></i> Scopus</td>
+          <td>6701688696</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 1rem 0.4rem 0; color:var(--muted); white-space:nowrap; vertical-align:top;"><i class="fas fa-id-badge" style="width:16px"></i> WoS</td>
+          <td>I-5515-2016</td>
+        </tr>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  &copy; 2026 Pablo Fosalba Vela &nbsp;·&nbsp; Instituto de Ciencias del Espacio, CSIC &nbsp;·&nbsp;
+  Powered by <a href="https://pages.github.com" style="color:var(--accent)">GitHub Pages</a> &amp;
+  <a href="https://github.com/alshedivat/al-folio" style="color:var(--accent)">al-folio</a>
+</footer>
+
+</body>
+</html>
