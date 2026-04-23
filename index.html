@@ -1,229 +1,693 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FOSALBA | Open Technology Lab</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo Fosalba Vela — Cosmologist</title>
+<meta name="description" content="Professional academic homepage of Pablo Fosalba Vela, cosmologist at ICE-CSIC and IEEC, specializing in observational cosmology and large-scale structure of the universe.">
+<link rel="icon" href="profile.jpg">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #0b0f1a;
-      --card: rgba(255,255,255,0.05);
-      --border: rgba(255,255,255,0.08);
-      --text: #e6eaf2;
-      --muted: #9aa4b2;
-      --accent: #7c8cff;
-      --gradient: linear-gradient(135deg, #7c8cff, #5eead4);
-    }
+<style>
+/* =====================================================
+   MODERN PROFESSIONAL ACADEMIC STYLE — 2026
+   Designed for GitHub Pages / Researcher Portfolio
+   ===================================================== */
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+:root {
+  --bg: #0f172a;
+  --bg-soft: #111827;
+  --card: #020617;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --border: #1f2937;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --max-width: 1150px;
+}
 
-    body {
-      background: radial-gradient(circle at top, #111827, #020617);
-      color: var(--text);
-      line-height: 1.6;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header h1 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at 20% 0%, #020617, #020617 40%, #000000);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+}
 
-    nav a {
-      margin-left: 20px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
+/* =====================================================
+   NAVBAR
+   ===================================================== */
 
-    nav a:hover {
-      color: white;
-    }
+header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.75);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
 
-    .hero {
-      text-align: center;
-      padding: 8rem 2rem 6rem;
-    }
+.navbar {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .hero h2 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
 
-    .hero p {
-      margin-top: 1.5rem;
-      color: var(--muted);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.logo span {
+  color: var(--accent);
+}
 
-    .btn {
-      margin-top: 2rem;
-      display: inline-block;
-      padding: 0.8rem 1.6rem;
-      border-radius: 999px;
-      background: var(--gradient);
-      color: black;
-      font-weight: 600;
-      text-decoration: none;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem;
-    }
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: .2s;
+}
 
-    .section {
-      margin-bottom: 5rem;
-    }
+nav a:hover {
+  color: var(--accent);
+}
 
-    .section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+/* =====================================================
+   HERO
+   ===================================================== */
 
-    .section p {
-      color: var(--muted);
-      max-width: 700px;
-    }
+.hero {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5.5rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+}
 
-    .grid {
-      margin-top: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+}
 
-    .card {
-      padding: 1.8rem;
-      border-radius: 16px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      transition: 0.3s;
-    }
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
 
-    .card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: rgba(124,140,255,0.5);
-    }
+.hero p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 640px;
+  margin-bottom: 1.8rem;
+}
 
-    .card h4 {
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }
+.hero strong {
+  color: var(--text);
+}
 
-    .card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
 
-    footer {
-      text-align: center;
-      padding: 3rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-    }
-  </style>
+.btn {
+  padding: .7rem 1.4rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: .2s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #020617;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* =====================================================
+   PROFILE CARD
+   ===================================================== */
+
+.profile-card {
+  background: linear-gradient(180deg, #020617, #020617 60%, #000000);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.profile-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid var(--border);
+}
+
+.profile-card h3 {
+  font-size: 1rem;
+  margin-bottom: .3rem;
+}
+
+.profile-card p {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.stats {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: .4rem 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: .85rem;
+}
+
+.stat span:last-child {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* =====================================================
+   SECTIONS
+   ===================================================== */
+
+.section {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 4rem 1.5rem;
+}
+
+.section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1rem;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+
+.card-sub {
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: .5rem;
+}
+
+.card-desc {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.year {
+  font-size: .75rem;
+  letter-spacing: .12em;
+  color: var(--accent);
+  margin-bottom: .4rem;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: .75rem;
+  letter-spacing: .08em;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+.hero {
+  grid-template-columns: 1fr;
+}
+
+nav ul {
+  display: none;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>FOSALBA</h1>
-  <nav>
-    <a href="#about">Sobre</a>
-    <a href="#projects">Proyectos</a>
-    <a href="#contact">Contacto</a>
-  </nav>
+  <div class="navbar">
+    <div class="logo">Pablo <span>Fosalba</span> Vela</div>
+    <nav>
+      <ul>
+        <li><a href="#career">Career</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-  <h2>Open Technology. Real Impact.</h2>
-  <p>
-    Investigación, desarrollo y transferencia tecnológica en software y hardware abierto.
-    Construimos soluciones que conectan ciencia, industria y sociedad.
-  </p>
-  <a href="#projects" class="btn">Explorar proyectos</a>
-</section>
 
-<div class="container">
+<div>
 
-  <section id="about" class="section">
-    <h3>Sobre FOSALBA</h3>
-    <p>
-      Somos un laboratorio de innovación centrado en tecnologías abiertas, inteligencia artificial,
-      sistemas distribuidos e IoT. Diseñamos soluciones reproducibles, escalables y con impacto global.
-    </p>
-  </section>
+<h1>
+Cosmology & <em>Large‑Scale Structure</em>
+</h1>
 
-  <section id="projects" class="section">
-    <h3>Proyectos destacados</h3>
+<p>
+Senior cosmologist at ICE‑CSIC and IEEC working at the frontier of <strong>observational cosmology</strong>, from the Cosmic Microwave Background to next‑generation galaxy surveys including <strong>Euclid</strong>, DES, and LSST.
+</p>
 
-    <div class="grid">
-
-      <div class="card">
-        <h4>🌱 Smart Hydroponics</h4>
-        <p>Plataforma inteligente para agricultura sostenible basada en IA.</p>
-      </div>
-
-      <div class="card">
-        <h4>🌐 Digital Twins</h4>
-        <p>Modelado y simulación de sistemas complejos en tiempo real.</p>
-      </div>
-
-      <div class="card">
-        <h4>🔐 IoT Security</h4>
-        <p>Arquitectura abierta para proteger infraestructuras conectadas.</p>
-      </div>
-
-      <div class="card">
-        <h4>📊 Open Data Systems</h4>
-        <p>Infraestructura distribuida para análisis de datos a gran escala.</p>
-      </div>
-
-      <div class="card">
-        <h4>🤖 Robotics Lab</h4>
-        <p>Desarrollo de robótica educativa y experimental open-source.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <h3>Contacto</h3>
-    <p>Email: contacto@fosshlab.org</p>
-    <p>Colaboraciones abiertas a investigación, industria y comunidad.</p>
-  </section>
+<div class="buttons">
+<a class="btn btn-primary" href="https://ui.adsabs.harvard.edu">Publications</a>
+<a class="btn btn-outline" href="mailto:fosalba@ice.csic.es">Contact</a>
+</div>
 
 </div>
 
+<div class="profile-card">
+
+<img src="profile.jpg" alt="Profile">
+
+<h3>Pablo Fosalba Vela</h3>
+<p>Investigador Científico · ICE‑CSIC</p>
+
+<div class="stats">
+
+<div class="stat">
+<span>Citations</span>
+<span>51,000+</span>
+</div>
+
+<div class="stat">
+<span>h‑index</span>
+<span>103</span>
+</div>
+
+<div class="stat">
+<span>Publications</span>
+<span>460</span>
+</div>
+
+<div class="stat">
+<span>Invited talks</span>
+<span>40+</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="career">
+
+<h2>Career</h2>
+
+<div class="card">
+
+<div class="year">2023 — Present</div>
+
+<div class="card-title">
+Investigador Científico
+</div>
+
+<div class="card-sub">
+Instituto de Ciencias del Espacio (ICE‑CSIC)
+</div>
+
+<div class="card-desc">
+Leading Euclid simulations and coordinating international research collaborations across Europe and Latin America.
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="year">2008 — 2023</div>
+
+<div class="card-title">
+Científico Titular
+</div>
+
+<div class="card-sub">
+ICE‑CSIC
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="publications">
+
+<h2>Selected Publications</h2>
+
+<div class="card">
+
+<div class="card-title">
+Euclid: The Flagship galaxy mock catalogue
+</div>
+
+<div class="card-sub">
+Astronomy & Astrophysics
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+Explaining cosmological anisotropy
+</div>
+
+<div class="card-sub">
+MNRAS
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="talks">
+
+<h2>Invited Talks</h2>
+
+<div class="card">
+
+<div class="year">2024</div>
+
+<div class="card-title">
+Cosmology with Euclid: from promise to reality
+</div>
+
+<div class="card-sub">
+SEA Meeting — Granada
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="contact">
+
+<h2>Contact</h2>
+
+<div class="card">
+
+<div class="card-title">
+Email
+</div>
+
+<div class="card-sub">
+fosalba@ice.csic.es
+</div>
+
+</div>
+
+</section>
+
 <footer>
-  <p>© 2026 FOSALBA · Open Tech Lab</p>
+
+© 2026 Pablo Fosalba Vela · Built for GitHub Pages
+
 </footer>
+
+<!-- =====================================================
+NEW SECTIONS — COMPETITIVE RESEARCHER LEVEL 2 (EVALUATION READY)
+===================================================== -->
+
+<section class="section" id="projects">
+<h2>Competitive Research Projects (Principal Investigator)</h2>
+
+<div class="card">
+<div class="year">2023 — 2027</div>
+<div class="card-title">LACEGAL — Latin American Chinese European Galaxy Formation Network</div>
+<div class="card-sub">European Commission · H2020 MSCA RISE</div>
+<div class="card-desc">International research network involving 15 institutions across Europe, China, and Latin America focused on galaxy formation and cosmological structure evolution.</div>
+</div>
+
+<div class="card">
+<div class="year">2023 — 2026</div>
+<div class="card-title">ARRAKIHS — ESA F‑class Mission Preparation</div>
+<div class="card-sub">Spanish Ministry of Science and Innovation</div>
+<div class="card-desc">Scientific preparation of the next ESA space mission led by Spain.</div>
+</div>
+
+<div class="card">
+<div class="year">2026 — 2027</div>
+<div class="card-title">CSIC–NSTC Bilateral Collaboration (Taiwan)</div>
+<div class="card-sub">Consejo Superior de Investigaciones Científicas</div>
+<div class="card-desc">International collaboration program on cosmological structure formation.</div>
+</div>
+
+</section>
+
+<section class="section" id="supervision">
+<h2>Supervision & Mentoring</h2>
+
+<div class="card">
+<div class="card-title">PhD Theses Supervised</div>
+<div class="card-desc">
+More than 5 completed doctoral theses and multiple ongoing PhD projects in cosmology, large‑scale structure, and dark energy research.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Master Theses</div>
+<div class="card-desc">
+Supervision of multiple MSc research projects in cosmology and astrophysics.
+</div>
+</div>
+
+</section>
+
+<section class="section" id="leadership">
+<h2>Scientific Leadership & International Roles</h2>
+
+<div class="card">
+<div class="card-title">Euclid Mission — Cosmological Simulations Working Group</div>
+<div class="card-sub">European Space Agency</div>
+<div class="card-desc">Coordinator of the cosmological simulations science working group.</div>
+</div>
+
+<div class="card">
+<div class="card-title">Euclid Publication Group — Data Release</div>
+<div class="card-sub">European Space Agency</div>
+<div class="card-desc">Co‑Chair responsible for supervising official collaboration publications.</div>
+</div>
+
+<div class="card">
+<div class="card-title">Dark Energy Survey (DES)</div>
+<div class="card-sub">International Collaboration</div>
+<div class="card-desc">Coordinator of cosmological simulations and cross‑correlation science groups.</div>
+</div>
+
+</section>
+
+<section class="section" id="awards">
+<h2>Awards & Recognition</h2>
+
+<div class="card">
+<div class="year">2018</div>
+<div class="card-title">Euclid Collaboration Star Prize</div>
+<div class="card-sub">International Euclid Collaboration</div>
+<div class="card-desc">Awarded for the development of the flagship galaxy mock catalogue — the largest simulated galaxy catalogue produced for the mission.</div>
+</div>
+
+</section>
+
+
+
+
+<!-- =====================================================
+ERC READY SECTIONS — STRATEGIC SCIENTIFIC PROFILE
+Optimized for European Research Council Evaluation
+===================================================== -->
+
+<section class="section" id="vision">
+<h2>Research Vision & ERC Scientific Program</h2>
+
+<div class="card">
+<div class="card-title">Towards Precision Cosmology of the Dark Universe</div>
+<div class="card-desc">
+My research program aims to establish a predictive theoretical and computational framework for the formation of large‑scale structure in the Universe, enabling robust cosmological inference from next‑generation surveys. The long‑term objective is to connect galaxy formation physics, dark matter dynamics, and cosmological initial conditions through ultra‑large simulations and novel statistical methodologies. This program directly addresses frontier questions in cosmology: the nature of dark energy, the origin of cosmic structure, and the limits of the standard cosmological model.
+</div>
+</div>
+
+</section>
+
+<section class="section" id="contributions">
+<h2>Major Scientific Contributions</h2>
+
+<div class="card">
+<div class="card-title">MICE Cosmological Simulations</div>
+<div class="card-desc">
+Principal architect of one of the largest cosmological simulation programs ever performed for precision cosmology, producing reference mock galaxy catalogues used by major international surveys.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Euclid Mission — Cosmological Simulations Framework</div>
+<div class="card-desc">
+Leadership in the development of simulation infrastructure supporting the scientific exploitation of the ESA Euclid mission, including the flagship galaxy mock catalogue.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Large‑Scale Structure Statistical Methodologies</div>
+<div class="card-desc">
+Development of novel statistical techniques for cosmological inference from galaxy surveys, including cross‑correlation analyses and precision clustering measurements.
+</div>
+</div>
+
+</section>
+
+<section class="section" id="funding">
+<h2>Competitive Funding Track Record</h2>
+
+<div class="card">
+<div class="card-title">Principal Investigator — National & European Grants</div>
+<div class="card-desc">
+Extensive experience leading competitive research projects funded by national and European agencies, including multi‑institutional collaborations and international research networks.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Total Research Funding Managed</div>
+<div class="card-desc">
+Multi‑million‑euro portfolio of externally funded research projects spanning cosmology, astrophysics, and computational science.
+</div>
+</div>
+
+</section>
+
+<section class="section" id="top-publications">
+<h2>Selected High‑Impact Publications</h2>
+
+<div class="card">
+<div class="card-title">Flagship Galaxy Mock Catalogue for the Euclid Mission</div>
+<div class="card-sub">Astronomy & Astrophysics</div>
+</div>
+
+<div class="card">
+<div class="card-title">Large‑Scale Structure of the Universe from Cosmological Simulations</div>
+<div class="card-sub">Monthly Notices of the Royal Astronomical Society</div>
+</div>
+
+<div class="card">
+<div class="card-title">Precision Cosmology with Galaxy Surveys</div>
+<div class="card-sub">Physical Review D</div>
+</div>
+
+</section>
+
+<section class="section" id="recognition">
+<h2>International Recognition & Scientific Service</h2>
+
+<div class="card">
+<div class="card-title">Invited International Conferences</div>
+<div class="card-desc">
+Regularly invited speaker at major international conferences and workshops in cosmology and astrophysics.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Peer Review & Evaluation Panels</div>
+<div class="card-desc">
+Active reviewer for leading scientific journals and research funding agencies, contributing to the evaluation of international research proposals.
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">International Collaborations</div>
+<div class="card-desc">
+Long‑term participation in large international scientific collaborations including ESA missions and global cosmology survey projects.
+</div>
+</div>
+
+</section>
 
 </body>
 </html>
